@@ -1,0 +1,431 @@
+/* Facture réservation — charte Zig Imobilier */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+:root {
+    --inv-primary: #1b4d24;
+    --inv-primary-dark: #143a1b;
+    --inv-accent: #c9a227;
+    --inv-text: #1f2937;
+    --inv-muted: #6b7280;
+    --inv-border: #e5e7eb;
+    --inv-stripe: #f3f4f6;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.invoice-body {
+    margin: 0;
+    padding: 1.5rem;
+    background: #eef2f6;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--inv-text);
+}
+
+.invoice-body--print {
+    padding: 0;
+    background: #fff;
+}
+
+.invoice-doc {
+    max-width: 920px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+}
+
+.invoice-doc--embedded {
+    max-width: none;
+    box-shadow: none;
+    border: 1px solid var(--inv-border);
+    border-radius: 14px;
+}
+
+.invoice-header {
+    position: relative;
+    background: linear-gradient(135deg, var(--inv-primary-dark), var(--inv-primary));
+    color: #fff;
+    padding: 1.75rem 1.75rem 1.25rem 4.5rem;
+}
+
+.invoice-ribbon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -28px;
+    width: 52px;
+    background: var(--inv-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.invoice-ribbon span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #1a1a1a;
+}
+
+.invoice-header-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+
+.invoice-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.invoice-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.invoice-brand-name {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.invoice-brand-tagline {
+    margin: 0.15rem 0 0;
+    font-size: 0.82rem;
+    opacity: 0.88;
+}
+
+.invoice-company-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    opacity: 0.95;
+}
+
+.invoice-company-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.invoice-meta-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+}
+
+.invoice-meta-block p {
+    margin: 0 0 0.35rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.invoice-meta-side {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.invoice-total-due {
+    background: var(--inv-accent);
+    color: #1a1a1a;
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.invoice-total-due span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.invoice-total-due strong {
+    font-size: 1.15rem;
+}
+
+.invoice-bill-to-label {
+    margin: 0 0 0.25rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+}
+
+.invoice-bill-to p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.invoice-body-content {
+    padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+}
+
+.invoice-table th {
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--inv-muted);
+    padding: 0.65rem 0.75rem;
+    border-bottom: 2px solid var(--inv-border);
+}
+
+.invoice-table th:nth-child(n+2),
+.invoice-table td:nth-child(n+2) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.invoice-table td {
+    padding: 0.85rem 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--inv-border);
+    font-size: 0.88rem;
+}
+
+.invoice-table tbody tr:nth-child(even) {
+    background: var(--inv-stripe);
+}
+
+.invoice-table td strong {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.invoice-table td span {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--inv-muted);
+    line-height: 1.35;
+}
+
+.invoice-summary-row {
+    display: grid;
+    grid-template-columns: 1fr min(280px, 100%);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.invoice-payment-note h3,
+.invoice-footer h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.95rem;
+}
+
+.invoice-payment-note p,
+.invoice-footer p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--inv-muted);
+    line-height: 1.5;
+}
+
+.invoice-status-note {
+    margin-top: 0.5rem !important;
+    color: var(--inv-primary) !important;
+    font-weight: 600;
+}
+
+.invoice-totals {
+    border: 1px solid var(--inv-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.invoice-totals-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid var(--inv-border);
+}
+
+.invoice-totals-row--grand {
+    background: var(--inv-primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-bottom: none;
+}
+
+.invoice-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid var(--inv-border);
+}
+
+.invoice-signature {
+    min-width: 180px;
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--inv-muted);
+}
+
+.invoice-signature-line {
+    display: block;
+    width: 160px;
+    margin: 1.5rem 0 0.35rem auto;
+    border-top: 1px solid #94a3b8;
+}
+
+.invoice-toolbar {
+    max-width: 920px;
+    margin: 0 auto 1rem;
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.invoice-toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.invoice-toolbar-btn--primary {
+    background: var(--inv-primary);
+    color: #fff;
+}
+
+.invoice-toolbar-btn--ghost {
+    background: #fff;
+    color: var(--inv-primary);
+    border: 1px solid var(--inv-border);
+}
+
+.reservation-invoice-section {
+    margin-top: 0.5rem;
+}
+
+.reservation-invoice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.reservation-invoice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--zig-primary, #1b4d24);
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reservation-invoice-btn--outline {
+    background: #fff;
+    color: var(--zig-primary, #1b4d24);
+    border: 1px solid var(--zig-border, #e2e8f0);
+}
+
+@media (max-width: 767px) {
+    .invoice-header {
+        padding-left: 3.5rem;
+    }
+
+    .invoice-ribbon {
+        width: 42px;
+    }
+
+    .invoice-meta-grid,
+    .invoice-summary-row {
+        grid-template-columns: 1fr;
+    }
+
+    .invoice-body-content {
+        padding: 1rem;
+    }
+
+    .invoice-table {
+        font-size: 0.82rem;
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    .invoice-body {
+        padding: 0;
+        background: #fff;
+    }
+
+    .invoice-doc,
+    .invoice-doc--embedded {
+        box-shadow: none;
+        border: none;
+        max-width: none;
+    }
+
+    .invoice-toolbar,
+    .reservation-invoice-actions {
+        display: none !important;
+    }
+
+    .invoice-ribbon {
+        bottom: 0;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .invoice-header,
+    .invoice-total-due,
+    .invoice-totals-row--grand {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}

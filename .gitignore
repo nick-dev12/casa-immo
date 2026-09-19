@@ -1,0 +1,13 @@
+# Application
+/vendor/
+.env
+/storage/logs/*.log
+/storage/cache/*
+!/storage/logs/.gitkeep
+!/storage/cache/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
+/public/
+.DS_Store
+.idea/
+.vscode/

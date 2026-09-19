@@ -1,0 +1,90 @@
+/* Casa Immo — identité visuelle */
+.brand-mark {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.brand-mark-logo {
+    height: 3.3125rem;
+    width: auto;
+    max-width: min(300px, 62vw);
+}
+
+.brand-mark-logo-lg {
+    height: 3.875rem;
+    max-width: min(380px, 78vw);
+}
+
+.brand-mark-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #000;
+}
+
+.brand-mark-icon-lg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+}
+
+.brand-mark-icon-sm {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+}
+
+a.brand-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.booking-logo.brand-link .brand-mark-logo {
+    height: 4.489rem; /* +5% vs 4.275rem */
+    max-width: min(403px, 72vw);
+    background: transparent;
+}
+
+@media (max-width: 767px) {
+    .booking-logo.brand-link .brand-mark-logo {
+        height: 3.402rem; /* +5% vs 3.24rem */
+        max-width: min(302px, 68vw);
+        background: transparent;
+    }
+}
+
+.admin-sidebar-logo,
+.host-sidebar-logo,
+.admin-topbar-logo,
+.host-admin-topbar-logo {
+    padding: 0;
+    background: #000 !important;
+    overflow: hidden;
+}
+
+.admin-sidebar-logo .brand-mark,
+.host-sidebar-logo .brand-mark,
+.admin-topbar-logo .brand-mark,
+.host-admin-topbar-logo .brand-mark {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.auth-choose-brand-mark {
+    padding: 0 !important;
+    overflow: visible;
+    background: transparent !important;
+}
+
+.auth-choose-brand-mark .brand-mark {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}

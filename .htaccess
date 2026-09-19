@@ -1,0 +1,78 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Routes admin (évite tout conflit avec un dossier physique admin/)
+    RewriteRule ^admin(/.*)?$ index.php [QSA,L]
+
+    # Bloquer l'accès direct aux dossiers sensibles
+    RewriteRule ^(app|config|database|routes|storage|views|vendor)(/|$) - [F,L]
+
+    # Fichiers et dossiers statiques existants
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Toutes les autres requêtes → index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Limites PHP pour l'upload de photos (XAMPP / mod_php)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 128M
+    php_value post_max_size 128M
+    php_value max_file_uploads 20
+    php_value max_input_time 120
+    php_value memory_limit 256M
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 128M
+    php_value post_max_size 128M
+    php_value max_file_uploads 20
+    php_value max_input_time 120
+    php_value memory_limit 256M
+</IfModule>
+
+# Empêcher l'exécution de PHP dans uploads
+<IfModule mod_rewrite.c>
+    RewriteRule ^uploads/.*\.php$ - [F,L]
+</IfModule>
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Compression gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+
+# Cache long pour assets statiques
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|jpg|jpeg|png|webp|gif|svg|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    Header append Vary Accept-Encoding
+</IfModule>
+
+Options -Indexes
+
+# Protéger .env
+<Files ".env">
+    Require all denied
+</Files>

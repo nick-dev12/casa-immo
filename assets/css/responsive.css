@@ -1,0 +1,160 @@
+/* ============================================================
+   Zig Imobilier — Responsive global
+   ============================================================ */
+
+html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Conteneurs fluides tous écrans */
+.app-container,
+.property-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 576px) {
+    .app-container,
+    .property-container {
+        max-width: 540px;
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
+    }
+}
+
+@media (min-width: 768px) {
+    .app-container,
+    .property-container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .app-container {
+        max-width: 1140px;
+    }
+
+    .property-container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .app-container,
+    .property-container {
+        max-width: 1320px;
+    }
+}
+
+/* Header mobile */
+@media (max-width: 575px) {
+    .location-value {
+        font-size: 0.85rem;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .location-value .bi-chevron-down {
+        display: none;
+    }
+}
+
+/* Search */
+@media (max-width: 575px) {
+    .search-bar {
+        padding: 0.75rem 0.85rem;
+    }
+
+    .search-bar input {
+        font-size: 16px; /* évite zoom iOS */
+    }
+
+    .filter-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .search-tab {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.65rem;
+    }
+}
+
+/* Cartes listing — géré par la grille globale (2 → 6) */
+@media (min-width: 576px) and (max-width: 991px) {
+    .nearby-card-image {
+        flex: 0 0 88px;
+        width: 88px;
+        height: 88px;
+    }
+}
+
+@media (max-width: 575px) {
+    .nearby-card-image {
+        flex: 0 0 88px;
+        width: 88px;
+        height: 88px;
+    }
+
+    .nearby-card-body h3 {
+        font-size: 0.88rem;
+    }
+}
+
+/* Filtres liste */
+@media (max-width: 767px) {
+    .filter-panel .row > [class*="col-"] {
+        margin-bottom: 0.25rem;
+    }
+
+    .filter-panel .form-control,
+    .filter-panel .form-select {
+        font-size: 16px;
+        min-height: 44px;
+    }
+}
+
+/* Bottom nav — zones tactiles */
+.bottom-nav-item {
+    min-width: 56px;
+    min-height: 48px;
+    justify-content: center;
+}
+
+/* Accueil booking — listing mobile */
+@media (max-width: 767px) {
+    .page-home .app-main-home {
+        padding-bottom: calc(68px + env(safe-area-inset-bottom));
+    }
+
+    .page-home .booking-body .container.app-container {
+        padding-left: max(0.85rem, env(safe-area-inset-left));
+        padding-right: max(0.85rem, env(safe-area-inset-right));
+    }
+}
+
+@media (min-width: 992px) {
+    .bottom-nav {
+        display: none !important;
+    }
+}
+
+/* Page header */
+@media (max-width: 575px) {
+    .page-header h1 {
+        font-size: 1.15rem;
+    }
+}

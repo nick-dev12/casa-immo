@@ -1,0 +1,361 @@
+/* ============================================================
+   Zig Imobilier — UI mobile (inspirée app ticket moderne)
+   Bleu · Blanc · Orange · fond #f8fafb
+   ============================================================ */
+
+@media (max-width: 991px) {
+    :root {
+        --mobile-bg: #f8fafb;
+        --mobile-card: #ffffff;
+        --mobile-radius: 14px;
+        --mobile-radius-sm: 10px;
+        --mobile-shadow: 0 4px 20px rgba(15, 23, 42, 0.07);
+        --mobile-shadow-lg: 0 10px 32px rgba(15, 23, 42, 0.1);
+    }
+
+    body.app-body {
+        background: var(--mobile-bg);
+    }
+
+    .app-main {
+        background: var(--mobile-bg);
+    }
+
+    /* Bottom navigation */
+    .bottom-nav {
+        background: var(--mobile-card);
+        border-top: 1px solid var(--zig-border);
+        box-shadow: 0 -4px 24px rgba(15, 23, 42, 0.08);
+        padding-top: 0.35rem;
+    }
+
+    .bottom-nav-item {
+        position: relative;
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: #94a3b8;
+        padding: 0.35rem 0.4rem 0.2rem;
+    }
+
+    .bottom-nav-item i {
+        font-size: 1.3rem;
+        margin-bottom: 1px;
+    }
+
+    .bottom-nav-item.active {
+        color: var(--zig-primary);
+    }
+
+    .bottom-nav-item.active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 28px;
+        height: 3px;
+        border-radius: 0 0 4px 4px;
+        background: var(--zig-primary);
+    }
+
+    .bottom-nav-badge {
+        background: var(--zig-accent);
+        font-size: 0.55rem;
+        min-width: 0.95rem;
+        height: 0.95rem;
+        top: 0;
+        right: 0.2rem;
+        box-shadow: 0 0 0 2px #fff;
+    }
+
+    /* Cartes logements */
+    .property-card {
+        background: var(--mobile-card);
+        border-radius: var(--mobile-radius);
+        padding: 0.55rem;
+        box-shadow: var(--mobile-shadow);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .property-card-image {
+        border-radius: var(--mobile-radius-sm);
+        box-shadow: none;
+    }
+
+    .property-card-body {
+        padding: 0.65rem 0.35rem 0.25rem;
+    }
+
+    .property-card-body h3 {
+        font-size: 0.92rem;
+        color: var(--zig-text);
+    }
+
+    .badge-discount {
+        background: var(--zig-accent-soft);
+        color: var(--zig-accent-dark);
+    }
+
+    /* Accueil mobile — recherche gérée par booking-home (Idealista) */
+    .page-home .booking-body {
+        background: #fff;
+        padding-top: 1.1rem;
+    }
+
+    .page-home .listing-section-featured,
+    .page-home .listing-section-city,
+    .page-home .casamance-cities-section {
+        background: transparent;
+    }
+
+    .page-home .section-head h2 {
+        color: var(--zig-text);
+    }
+
+    /* Destination mobile */
+    .page-destination .app-main,
+    .page-destination .dest-properties-section {
+        background: var(--mobile-bg);
+    }
+
+    .page-destination .dest-properties-grid .property-card {
+        box-shadow: var(--mobile-shadow);
+    }
+
+    /* Pages compte */
+    .page-account .app-main,
+    .page-reservations .app-main,
+    .page-messages .app-main,
+    .page-profile .app-main,
+    .page-reservation-detail .app-main,
+    .page-reservation-host .app-main {
+        background: var(--mobile-bg);
+    }
+
+    .account-page,
+    .reservations-page,
+    .messages-page,
+    .profile-page {
+        padding-top: 0.5rem;
+    }
+
+    .page-help .app-main {
+        background: #ffffff;
+    }
+
+    .help-page {
+        padding-top: max(0.85rem, env(safe-area-inset-top));
+        background: #ffffff;
+    }
+
+    .account-page-head,
+    .reservations-head {
+        margin: 0 -1rem 1rem;
+        padding: 1.1rem 1rem 1.25rem;
+        background: linear-gradient(145deg, var(--zig-primary-dark) 0%, var(--zig-primary) 100%);
+        color: #fff;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 8px 24px rgba(27, 77, 36, 0.2);
+    }
+
+    .account-page-head h1,
+    .reservations-head h1 {
+        color: #fff;
+        font-size: 1.25rem;
+    }
+
+    .reservations-head-unread,
+    .account-badge {
+        background: var(--zig-accent);
+        color: #fff;
+    }
+
+    .account-back {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    /* Onglets style pill */
+    .reservations-mode-tab,
+    .reservations-tab,
+    .profile-pref-tab {
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    .reservations-mode-tab.is-active {
+        box-shadow: var(--zig-shadow-primary);
+    }
+
+    .reservations-tab.is-active {
+        background: var(--zig-primary-soft);
+        color: var(--zig-primary);
+    }
+
+    /* Lignes réservation = cartes */
+    .reservation-row {
+        box-shadow: var(--mobile-shadow);
+        border: 1px solid var(--zig-border);
+    }
+
+    /* Profil */
+    .profile-page {
+        padding-left: max(0.85rem, env(safe-area-inset-left));
+        padding-right: max(0.85rem, env(safe-area-inset-right));
+    }
+
+    .profile-hero {
+        background: var(--mobile-card);
+        border: none;
+        box-shadow: var(--mobile-shadow);
+        border-radius: var(--mobile-radius);
+    }
+
+    .profile-section-card {
+        background: var(--mobile-card);
+        border-radius: var(--mobile-radius);
+        box-shadow: var(--mobile-shadow);
+        border: 1px solid var(--zig-border);
+        overflow: hidden;
+    }
+
+    .profile-menu-item {
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .profile-menu-item-last {
+        border-bottom: none;
+    }
+
+    .profile-menu-badge {
+        background: var(--zig-accent);
+        color: #fff;
+    }
+
+    .profile-topbar-badge {
+        background: var(--zig-accent);
+    }
+
+    /* Messagerie */
+    .messages-inbox-item {
+        background: var(--mobile-card);
+        margin-bottom: 0.45rem;
+        border-radius: var(--mobile-radius-sm);
+        border: 1px solid var(--zig-border);
+        box-shadow: var(--mobile-shadow);
+        padding: 0.85rem;
+    }
+
+    .messages-inbox-item.is-unread {
+        border-color: rgba(27, 77, 36, 0.25);
+        box-shadow: 0 4px 16px rgba(27, 77, 36, 0.1);
+    }
+
+    .messages-unread-dot {
+        background: var(--zig-accent);
+    }
+
+    /* Auth mobile */
+    .page-auth .app-main,
+    .page-auth-choose .app-main {
+        background: #f3f4f6;
+    }
+
+    .auth-panel-login .auth-view.is-active,
+    .auth-screen-card {
+        background: #fff;
+    }
+
+    .auth-submit,
+    .account-btn,
+    .btn-primary {
+        min-height: 48px;
+        border-radius: var(--mobile-radius-sm);
+        font-weight: 700;
+    }
+
+    /* Fiche logement mobile */
+    .property-page .pd-content {
+        background: var(--mobile-bg);
+    }
+
+    .property-page .pd-block {
+        background: var(--mobile-card);
+        border-radius: var(--mobile-radius);
+        padding: 1rem;
+        margin-bottom: 0.85rem;
+        box-shadow: var(--mobile-shadow);
+        border: 1px solid var(--zig-border);
+    }
+
+    .property-page .pd-map {
+        border-radius: var(--mobile-radius-sm);
+        overflow: hidden;
+    }
+
+    .property-page .pd-booking-card {
+        border-radius: var(--mobile-radius);
+        box-shadow: var(--mobile-shadow-lg);
+        border: 1px solid var(--zig-border);
+    }
+
+    /* Host mobile */
+    .page-host .host-panel,
+    .page-host .host-dash-stat {
+        background: var(--mobile-card);
+        border-radius: var(--mobile-radius);
+        box-shadow: var(--mobile-shadow);
+        border: 1px solid var(--zig-border);
+    }
+
+    .host-bottom-nav {
+        background: var(--mobile-card);
+        box-shadow: 0 -4px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .host-bottom-nav-item.is-active {
+        color: var(--zig-primary);
+    }
+
+    .host-bottom-nav-badge {
+        background: var(--zig-accent);
+    }
+
+    /* Boutons pleine largeur sur formulaires mobile */
+    .account-form .account-btn,
+    .reservations-empty-btn,
+    .reservation-host-btn-primary {
+        width: 100%;
+    }
+
+    /* Listes vides */
+    .account-empty,
+    .reservations-empty,
+    .messages-page .account-empty {
+        background: var(--mobile-card);
+        border-radius: var(--mobile-radius);
+        box-shadow: var(--mobile-shadow);
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .property-card {
+        flex: none;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .booking-hero-text h1 {
+        font-size: 1.28rem;
+        line-height: 1.25;
+    }
+
+    .reservations-shell,
+    .account-page .container.app-container {
+        padding-left: max(0.85rem, env(safe-area-inset-left));
+        padding-right: max(0.85rem, env(safe-area-inset-right));
+    }
+}
