@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Helpers\AppUrl;
+
 return [
     'name' => env('APP_NAME', 'Casa Immo'),
     'tagline' => env('APP_TAGLINE', 'Trouvez votre bien, en toute confiance'),
@@ -10,7 +12,7 @@ return [
     'country' => env('APP_COUNTRY', 'Sénégal'),
     'env' => env('APP_ENV', 'production'),
     'debug' => filter_var(env('APP_DEBUG', false), FILTER_VALIDATE_BOOLEAN),
-    'url' => rtrim(env('APP_URL', 'http://localhost'), '/'),
+    'url' => AppUrl::resolve(),
     'timezone' => env('APP_TIMEZONE', 'UTC'),
     'locale' => env('APP_LOCALE', 'fr'),
     'csrf_token_name' => env('CSRF_TOKEN_NAME', '_token'),
