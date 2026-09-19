@@ -1,6 +1,7 @@
 # Application
 /vendor/
 .env
+/config/database.php
 /storage/logs/*.log
 /storage/cache/*
 !/storage/logs/.gitkeep

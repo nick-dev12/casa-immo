@@ -1,7 +1,7 @@
 <?php
 
 $db_host = 'localhost';
-$db_name = 'ariaqqrw_casa_immo';
+$db_name = 'votre_base';
 $db_user = 'root';
 $db_pass = '';
 
